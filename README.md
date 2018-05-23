@@ -20,5 +20,8 @@ docker-compose up -d
 ```bash
 cp .env.dist .env
 ```
-
+5. Create database schema
+```bash
+docker exec alert_api_php php bin/console d:s:u --force
+```
 

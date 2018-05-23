@@ -1,0 +1,29 @@
+AlertApi\Entity\Confirmation:
+    type: entity
+    table: confirmation
+    id:
+        id:
+            type: uuid
+            generator:
+                strategy: CUSTOM
+            customIdGenerator:
+                class: Ramsey\Uuid\Doctrine\UuidGenerator
+    fields:
+        value:
+            column: value
+            type: boolean
+            nullable: false
+            options:
+                default: 0
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+    manyToOne:
+        alert:
+            targetEntity: Alert
+            joinColumn:
+              name: alert_id
+              referencedColumnName: id
+
+    lifecycleCallbacks: {  }

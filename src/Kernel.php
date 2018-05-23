@@ -17,7 +17,8 @@ class Kernel extends BaseKernel
     public function registerBundles()
     {
         $bundles = [
-            new FrameworkBundle()
+            new FrameworkBundle(),
+            new DoctrineBundle()
         ];
 
         return $bundles;

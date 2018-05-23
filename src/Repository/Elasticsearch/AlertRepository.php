@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Repository;
+namespace AlertApi\Repository\Elasticsearch;
 
-use AlertApi\Form\Model\Query;
-use AlertApi\Model\Alert;
+use AlertApi\Model\Query;
+use AlertApi\Entity\Alert;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 
@@ -11,8 +11,7 @@ class AlertRepository
 {
     const ELASTICSEARCH_INDEX = 'alert';
     const ELASTICSEARCH_TYPE = 'alert';
-    const DEFAULT_DISTANCE_VALUE = 5;
-    const DEFAULT_DISTANCE_UNIT = 'km';
+    const DEFAULT_DISTANCE = '5km';
 
     /** @var Client */
     private $client;
@@ -37,14 +36,6 @@ class AlertRepository
      */
     public function findByQuery(Query $query)
     {
-        $distance = $query->distance ? $query->distance : self::DEFAULT_DISTANCE_VALUE;
-        $distance = sprintf('%s%s', $distance, self::DEFAULT_DISTANCE_UNIT);
-        $match = ['match_all' => []];
-
-        if ($query->type) {
-            $match = ['type' => $query->type];
-        }
-
         $alerts = [];
         $params = [
             'index' => self::ELASTICSEARCH_INDEX,
@@ -53,11 +44,11 @@ class AlertRepository
                 'query' => [
                     'bool' => [
                         'must' => [
-                            'match' => $match
+                            'match' => ['match_all' => []]
                         ],
                         'filter' => [
                             'geo_distance' => [
-                                'distance' => $distance,
+                                'distance' => self::DEFAULT_DISTANCE,
                                 'location' => [
                                     'lat' => $query->latitude,
                                     'lon' => $query->longitude
@@ -98,7 +89,7 @@ class AlertRepository
             'type' => self::ELASTICSEARCH_TYPE,
             'id' => $alert->getId(),
             'body' => [
-                'type' => $alert->getType(),
+                'type' => $alert->getType()->getName(),
                 'location' => [
                     'lat' => $alert->getLatitude(),
                     'lon' => $alert->getLongitude()

@@ -1,0 +1,41 @@
+AlertApi\Entity\Alert:
+    type: entity
+    table: alert
+    repositoryClass: AlertApi\Repository\Doctrine\AlertRepository
+    id:
+        id:
+            type: uuid
+            generator:
+                strategy: CUSTOM
+            customIdGenerator:
+                class: Ramsey\Uuid\Doctrine\UuidGenerator
+    fields:
+        latitude:
+            column: latitude
+            type: decimal
+            scale: 8
+            precision: 10
+            nullable: false
+        longitude:
+            column: longitude
+            type: decimal
+            scale: 8
+            precision: 11
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+    oneToMany:
+        confirmations:
+            targetEntity: Confirmation
+            mappedBy: alert
+            cascade: ["all"]
+    manyToOne:
+        type:
+             targetEntity: Type
+             joinColumn:
+                name: type_id
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

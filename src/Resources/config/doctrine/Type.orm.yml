@@ -1,0 +1,23 @@
+AlertApi\Entity\Type:
+    type: entity
+    table: type
+    id:
+        id:
+            type: uuid
+            generator:
+                strategy: CUSTOM
+            customIdGenerator:
+                class: Ramsey\Uuid\Doctrine\UuidGenerator
+    fields:
+        name:
+            column: name
+            type: string
+            nullable: false
+            length: 64
+    oneToMany:
+         alerts:
+             targetEntity: Alert
+             mappedBy: type
+             cascade: ["all"]
+
+    lifecycleCallbacks: {  }

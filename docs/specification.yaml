@@ -9,18 +9,12 @@ servers:
     description: Localy server
 
 paths:
-  /alert:
+  /alerts:
     get:
       tags:
         - Alert
       summary: Return alerts by position
       parameters:
-        - in: query
-          name: type
-          description: Type of alert
-          schema:
-            type: string
-            enum: [speed_camera]
         - in: query
           name: latitude
           description: Latitude of position
@@ -33,11 +27,6 @@ paths:
           schema:
             type: string
           required: true
-        - in: query
-          name: distance
-          description: Distance from the alert
-          schema:
-            type: integer
       responses:
         '200':
           description: A JSON response with alerts
@@ -50,7 +39,7 @@ paths:
     post:
       tags:
         - Alert
-      summary: Create new alert
+      summary: Report new alert
       requestBody:
         required: true
         content:
@@ -66,11 +55,37 @@ paths:
                   type: string
       responses:
         '200':
+          description: A JSON response with message
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
+
+  /confirmations:
+    post:
+      tags:
+        - Confirmation
+      summary: Confirm or refuse alert
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                alert:
+                  type: "string"
+                  format: "uuid"
+                value:
+                  type: boolean
+      responses:
+        '200':
           description: A JSON response with alert
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Alert"
+                $ref: "#/components/schemas/Message"
+
 components:
   schemas:
     Alert:
@@ -85,6 +100,12 @@ components:
           type: "string"
         longitude:
           type: "string"
-        created_at:
+        distance:
           type: "string"
-          format: date-time
+    Message:
+      type: "object"
+      properties:
+        status:
+          type: "string"
+        message:
+          type: "string"

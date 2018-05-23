@@ -2,33 +2,39 @@
 
 namespace AlertApi\Controller;
 
-use AlertApi\Form\Model\Query;
-use AlertApi\Form\Model\Report;
+use AlertApi\Entity\Alert;
+use AlertApi\Form\Type\AlertType;
+use AlertApi\Model\Query;
 use AlertApi\Form\Type\QueryType;
-use AlertApi\Form\Type\ReportType;
-use AlertApi\Model\Alert;
-use AlertApi\Repository\AlertRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AlertApi\Repository\Doctrine\AlertRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class AlertController extends Controller
+class AlertController extends BaseController
 {
     /**
-     * Get alerts by localization
+     * Get alerts by parameters
      * @param Request $request
      * @return JsonResponse
      */
     public function search(Request $request): JsonResponse
     {
-        /** @var AlertRepository $alertRepository */
-        $alertRepository = $this->get('alert_api.repository.alert');
         $form = $this->createForm(QueryType::class);
         $form->handleRequest($request);
 
+        if ($form->isSubmitted() && !$form->isValid()) {
+            $errors = $this->getFormErrorsAsArray($form);
+            return $this->error($errors);
+        }
+
         /** @var Query $query */
         $query = $form->getData();
+
+        /** @var AlertRepository $alertRepository */
+        $alertRepository = $this->getDoctrine()->getRepository(Alert::class);
         $alerts = $alertRepository->findByQuery($query);
+
+        //TODO Use elasticsearch to find alerts
 
         return JsonResponse::create($alerts);
     }
@@ -38,30 +44,25 @@ class AlertController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function create(Request $request): JsonResponse
+    public function save(Request $request): JsonResponse
     {
-        $form = $this->createForm(ReportType::class);
+        $form = $this->createForm(AlertType::class);
         $submittedData = json_decode($request->getContent(), true);
         $form->submit($submittedData);
 
         if (!$form->isValid()) {
-            return JsonResponse::create([
-                'status' => 'failed',
-                'message' => sprintf('Form has %s errors', $form->getErrors()->count())
-            ]);
+            $errors = $this->getFormErrorsAsArray($form);
+            return $this->error($errors);
         }
 
-        /** @var Report $report */
-        $report = $form->getData();
+        /** @var Alert $alert */
+        $alert = $form->getData();
+        $alert->setCreatedAt(new \DateTime());
 
-        /** @var AlertRepository $alertRepository */
-        $alertRepository = $this->get('alert_api.repository.alert');
-        $alert = new Alert($report->type, $report->latitude, $report->longitude);
-        $alertRepository->persist($alert);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($alert);
+        $em->flush();
 
-        return JsonResponse::create([
-           'status' => 'success',
-            'message' => 'Report successfully saved!'
-        ]);
+        return $this->success('Alert successfully saved!');
     }
 }

@@ -23,9 +23,12 @@
     "symfony/dependency-injection": "^4.0",
     "symfony/framework-bundle": "^4.0",
     "symfony/form": "^4.0",
+    "symfony/validator": "^4.0",
     "symfony/serializer": "^4.0",
     "elasticsearch/elasticsearch": "^6.0",
-    "ramsey/uuid": "^3.7"
+    "doctrine/doctrine-bundle": "^1.6.10",
+    "doctrine/orm": "^2.5.11",
+    "ramsey/uuid-doctrine": "^1.4"
   },
   "require-dev": {
     "symfony/dotenv": "^4.0",

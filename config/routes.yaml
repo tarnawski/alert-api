@@ -3,11 +3,6 @@ specification:
   controller: AlertApi\Controller\ApplicationController::specification
   methods: [GET]
 
-type_list:
-  path:     /types
-  controller: AlertApi\Controller\TypeController::list
-  methods: [GET]
-
 alert_search:
   path:     /alerts
   controller: AlertApi\Controller\AlertController::search
@@ -15,5 +10,10 @@ alert_search:
 
 alert_create:
   path:     /alerts
-  controller: AlertApi\Controller\AlertController::create
+  controller: AlertApi\Controller\AlertController::save
+  methods: [POST]
+
+alert_confirmation:
+  path:     /confirmations
+  controller: AlertApi\Controller\ConfirmationController::save
   methods: [POST]

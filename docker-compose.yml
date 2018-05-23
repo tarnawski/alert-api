@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  php:
+    image: php:7.2-fpm
+    links:
+      - elasticsearch
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+
+  nginx:
+    image: nginx:stable
+    ports:
+      - 85:80
+    links:
+      - php
+    volumes_from:
+      - php
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  elasticsearch:
+    image: elasticsearch

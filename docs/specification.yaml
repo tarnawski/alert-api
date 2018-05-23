@@ -1,0 +1,90 @@
+openapi: 3.0.0
+
+info:
+  title: Alert API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost/
+    description: Localy server
+
+paths:
+  /alert:
+    get:
+      tags:
+        - Alert
+      summary: Return alerts by position
+      parameters:
+        - in: query
+          name: type
+          description: Type of alert
+          schema:
+            type: string
+            enum: [speed_camera]
+        - in: query
+          name: latitude
+          description: Latitude of position
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: longitude
+          description: Longitude of position
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: distance
+          description: Distance from the alert
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A JSON response with alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Alert"
+    post:
+      tags:
+        - Alert
+      summary: Create new alert
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                latitude:
+                  type: string
+                longitude:
+                  type: string
+      responses:
+        '200':
+          description: A JSON response with alert
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Alert"
+components:
+  schemas:
+    Alert:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        type:
+          type: "string"
+        latitude:
+          type: "string"
+        longitude:
+          type: "string"
+        created_at:
+          type: "string"
+          format: date-time

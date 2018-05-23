@@ -1,0 +1,19 @@
+specification:
+  path:     /
+  controller: AlertApi\Controller\ApplicationController::specification
+  methods: [GET]
+
+type_list:
+  path:     /types
+  controller: AlertApi\Controller\TypeController::list
+  methods: [GET]
+
+alert_search:
+  path:     /alerts
+  controller: AlertApi\Controller\AlertController::search
+  methods: [GET]
+
+alert_create:
+  path:     /alerts
+  controller: AlertApi\Controller\AlertController::create
+  methods: [POST]

@@ -31,7 +31,7 @@ class ImportCommand extends Command
         $this->setName('alert:import')
             ->addArgument('type', InputArgument::REQUIRED, 'Type of alerts')
             ->addArgument('path', InputArgument::REQUIRED, 'Path to file')
-            ->setDescription('Imports alerts')
+            ->setDescription('Import alerts from file')
             ->setHelp('This command allows you to import alerts from file...');
     }
 

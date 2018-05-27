@@ -10,10 +10,10 @@ class AlertRepository extends EntityRepository
     const DEFAULT_LIMIT = 10;
 
     /**
-     * Find all alerts by Query
-     * Using Haversine Formula
+     * Find all alerts by Query using Haversine Formula
      * @param Query $query
      * @return array
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function findByQuery(Query $query): array
     {

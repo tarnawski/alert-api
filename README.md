@@ -1,5 +1,6 @@
 Alert Api
 ===========
+Application for warning users against traffic obstructions.
 
 ### Getting started
 In order to set application up you must follow by steps:

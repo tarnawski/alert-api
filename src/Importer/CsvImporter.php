@@ -37,8 +37,8 @@ class CsvImporter implements ImporterInterface
             throw new ImporterException(sprintf('Type: %s not found!', $name));
         }
 
-        if (($handle = fopen($path, "r")) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        if (($handle = fopen($path, "r")) !== false) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== false) {
                 $alert = new Alert();
                 $alert->setType($type);
                 $alert->setLatitude($data[0]);

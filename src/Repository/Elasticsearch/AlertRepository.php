@@ -63,7 +63,7 @@ class AlertRepository
         $results = $this->client->search($params);
 
         if (!isset($results['hits']['hits'])) {
-           return $alerts;
+            return $alerts;
         }
 
         foreach ($results['hits']['hits'] as $result) {

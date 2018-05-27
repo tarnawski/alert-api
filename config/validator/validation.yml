@@ -15,6 +15,8 @@ AlertApi\Entity\Type:
           - NotBlank: ~
           - Length:
               max:   64
+  constraints:
+      - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
 
 AlertApi\Entity\Alert:
   properties:

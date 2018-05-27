@@ -14,6 +14,7 @@ AlertApi\Entity\Type:
             column: name
             type: string
             nullable: false
+            unique: true
             length: 64
     oneToMany:
          alerts:

@@ -1,6 +1,7 @@
 AlertApi\Entity\Type:
     type: entity
     table: type
+    repositoryClass: AlertApi\Repository\Doctrine\TypeRepository
     id:
         id:
             type: uuid

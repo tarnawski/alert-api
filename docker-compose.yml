@@ -30,6 +30,8 @@ services:
       MYSQL_DATABASE: alert-api
       MYSQL_USER: admin
       MYSQL_PASSWORD: secret
+    ports:
+      - 3306:3306
 
   elasticsearch:
     image: elasticsearch

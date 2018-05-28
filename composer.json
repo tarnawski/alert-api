@@ -1,6 +1,13 @@
 {
+    "name": "tarnawski/alert-api",
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tomasz Tarnawski",
+            "email": "tarnawski27@gmail.com"
+        }
+    ],
     "require": {
         "php": "^7.1.3",
         "ext-ctype": "*",
@@ -16,7 +23,12 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
-        "symfony/dotenv": "^4.0"
+        "phpmd/phpmd": "^2.6",
+        "phpspec/phpspec": "^4.2",
+        "sebastian/phpcpd": "^4.0",
+        "squizlabs/php_codesniffer": "^3.2",
+        "symfony/dotenv": "^4.0",
+        "symfony/phpunit-bridge": "^4.0"
     },
     "config": {
         "preferred-install": {

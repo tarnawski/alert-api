@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Repository\Doctrine;
+namespace App\Repository\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
 

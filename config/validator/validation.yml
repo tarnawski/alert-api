@@ -1,4 +1,4 @@
-AlertApi\Model\Query:
+App\Model\Query:
   properties:
       latitude:
           - NotBlank: ~
@@ -9,7 +9,7 @@ AlertApi\Model\Query:
           - LessThan: 180
           - GreaterThan: -180
 
-AlertApi\Entity\Type:
+App\Entity\Type:
   properties:
       name:
           - NotBlank: ~
@@ -18,7 +18,7 @@ AlertApi\Entity\Type:
   constraints:
       - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
 
-AlertApi\Entity\Alert:
+App\Entity\Alert:
   properties:
       type:
           - NotBlank: ~
@@ -31,7 +31,7 @@ AlertApi\Entity\Alert:
           - LessThan: 180
           - GreaterThan: -180
 
-AlertApi\Entity\Confirmation:
+App\Entity\Confirmation:
   properties:
       value:
           - Type:

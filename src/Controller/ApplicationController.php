@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Controller;
+namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Yaml\Yaml;

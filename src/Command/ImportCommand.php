@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Command;
+namespace App\Command;
 
-use AlertApi\ImporterFactory;
+use App\ImporterFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use AlertApi\Exception\ImporterException;
+use App\Exception\ImporterException;
 
 class ImportCommand extends Command
 {

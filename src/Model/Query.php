@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Model;
+namespace App\Model;
 
 class Query
 {

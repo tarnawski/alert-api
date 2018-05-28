@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Entity;
+namespace App\Entity;
 
 use Ramsey\Uuid\Uuid;
 

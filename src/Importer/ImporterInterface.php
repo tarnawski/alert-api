@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Importer;
+namespace App\Importer;
 
 interface ImporterInterface
 {

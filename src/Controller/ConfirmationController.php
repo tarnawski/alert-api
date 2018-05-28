@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Controller;
+namespace App\Controller;
 
-use AlertApi\Entity\Confirmation;
-use AlertApi\Form\Type\ConfirmationType;
+use App\Entity\Confirmation;
+use App\Form\Type\ConfirmationType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 

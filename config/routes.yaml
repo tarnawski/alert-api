@@ -1,19 +1,19 @@
 specification:
   path:     /
-  controller: AlertApi\Controller\ApplicationController::specification
+  controller: App\Controller\ApplicationController::specification
   methods: [GET]
 
 alert_search:
   path:     /alerts
-  controller: AlertApi\Controller\AlertController::search
+  controller: App\Controller\AlertController::search
   methods: [GET]
 
 alert_create:
   path:     /alerts
-  controller: AlertApi\Controller\AlertController::save
+  controller: App\Controller\AlertController::save
   methods: [POST]
 
 alert_confirmation:
   path:     /confirmations
-  controller: AlertApi\Controller\ConfirmationController::save
+  controller: App\Controller\ConfirmationController::save
   methods: [POST]

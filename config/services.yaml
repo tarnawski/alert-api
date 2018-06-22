@@ -1,19 +1,25 @@
+parameters:
+    locale: 'en'
+
 services:
     _defaults:
+        autowire: true
+        autoconfigure: true
         public: false
 
     alert_api.importer.csv:
-        class: AlertApi\Importer\CsvImporter
+        class: App\Importer\CsvImporter
         arguments:
             - '@doctrine.orm.entity_manager'
 
     alert_api.import_factory:
-        class: AlertApi\ImporterFactory
+        class: App\ImporterFactory
         arguments:
             - '@alert_api.importer.csv'
 
     alert_api.command.import_command:
-        class: AlertApi\Command\ImportCommand
+        public: true
+        class: App\Command\ImportCommand
         arguments:
             - '@alert_api.import_factory'
         tags: [console.command]

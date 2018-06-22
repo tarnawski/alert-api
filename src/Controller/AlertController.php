@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Controller;
+namespace App\Controller;
 
-use AlertApi\Entity\Alert;
-use AlertApi\Form\Type\AlertType;
-use AlertApi\Model\Query;
-use AlertApi\Form\Type\QueryType;
-use AlertApi\Repository\Doctrine\AlertRepository;
+use App\Entity\Alert;
+use App\Form\Type\AlertType;
+use App\Model\Query;
+use App\Form\Type\QueryType;
+use App\Repository\Doctrine\AlertRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 

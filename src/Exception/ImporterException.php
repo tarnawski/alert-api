@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Exception;
+namespace App\Exception;
 
 class ImporterException extends \Exception
 {

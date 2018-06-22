@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Form\Type;
+namespace App\Form\Type;
 
-use AlertApi\Entity\Alert;
-use AlertApi\Entity\Type;
+use App\Entity\Alert;
+use App\Entity\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

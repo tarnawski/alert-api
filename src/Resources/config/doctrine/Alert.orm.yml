@@ -1,7 +1,7 @@
-AlertApi\Entity\Alert:
+App\Entity\Alert:
     type: entity
     table: alert
-    repositoryClass: AlertApi\Repository\Doctrine\AlertRepository
+    repositoryClass: App\Repository\Doctrine\AlertRepository
     id:
         id:
             type: uuid

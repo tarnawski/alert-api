@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Test;
+namespace App\Test;
 
-use AlertApi\Exception\ImporterException;
-use AlertApi\Importer\CsvImporter;
-use AlertApi\ImporterFactory;
+use App\Exception\ImporterException;
+use App\Importer\CsvImporter;
+use App\ImporterFactory;
 use PHPUnit\Framework\TestCase;
 
 class ImporterFactoryTest extends TestCase

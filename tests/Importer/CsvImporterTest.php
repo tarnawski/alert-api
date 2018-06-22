@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Test\Importer;
+namespace App\Test\Importer;
 
-use AlertApi\Exception\ImporterException;
-use AlertApi\Importer\CsvImporter;
+use App\Exception\ImporterException;
+use App\Importer\CsvImporter;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;

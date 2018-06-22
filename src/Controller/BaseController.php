@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Importer;
+namespace App\Importer;
 
-use AlertApi\Entity\Alert;
-use AlertApi\Entity\Type;
-use AlertApi\Exception\ImporterException;
-use AlertApi\Repository\Doctrine\AlertRepository;
+use App\Entity\Alert;
+use App\Entity\Type;
+use App\Exception\ImporterException;
+use App\Repository\Doctrine\AlertRepository;
 use Doctrine\ORM\EntityManager;
 
 class CsvImporter implements ImporterInterface

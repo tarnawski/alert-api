@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi\Form\Type;
+namespace App\Form\Type;
 
-use AlertApi\Model\Query;
+use App\Model\Query;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;

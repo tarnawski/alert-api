@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace AlertApi;
+namespace App;
 
-use AlertApi\Exception\ImporterException;
-use AlertApi\Importer\ImporterInterface;
+use App\Exception\ImporterException;
+use App\Importer\ImporterInterface;
 
 class ImporterFactory
 {

@@ -1,4 +1,4 @@
-AlertApi\Entity\Confirmation:
+App\Entity\Confirmation:
     type: entity
     table: confirmation
     id:

@@ -28,7 +28,8 @@
     "elasticsearch/elasticsearch": "^6.0",
     "doctrine/doctrine-bundle": "^1.6.10",
     "doctrine/orm": "^2.5.11",
-    "ramsey/uuid-doctrine": "^1.4"
+    "ramsey/uuid-doctrine": "^1.4",
+    "jmikola/geojson": "^1.0"
   },
   "require-dev": {
     "symfony/dotenv": "^4.0",

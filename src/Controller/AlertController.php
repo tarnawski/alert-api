@@ -6,7 +6,7 @@ use AlertApi\Entity\Alert;
 use AlertApi\Form\Type\AlertType;
 use AlertApi\Model\Query;
 use AlertApi\Form\Type\QueryType;
-use AlertApi\Repository\Doctrine\AlertRepository;
+use AlertApi\Repository\Elasticsearch\AlertRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,10 +31,8 @@ class AlertController extends BaseController
         $query = $form->getData();
 
         /** @var AlertRepository $alertRepository */
-        $alertRepository = $this->getDoctrine()->getRepository(Alert::class);
+        $alertRepository = $this->get('alert_api.repository.elasticsearch.alert');
         $alerts = $alertRepository->findByQuery($query);
-
-        //TODO Use elasticsearch to find alerts
 
         return JsonResponse::create($alerts);
     }
@@ -62,6 +60,10 @@ class AlertController extends BaseController
         $em = $this->getDoctrine()->getManager();
         $em->persist($alert);
         $em->flush();
+
+        /** @var AlertRepository $alertRepository */
+        $alertRepository = $this->get('alert_api.repository.elasticsearch.alert');
+        $alertRepository->persist($alert);
 
         return $this->success('Alert successfully saved!');
     }

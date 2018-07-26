@@ -1,13 +1,13 @@
-AlertApi\Model\Query:
-  properties:
-      latitude:
-          - NotBlank: ~
-          - LessThan: 90
-          - GreaterThan: -90
-      longitude:
-          - NotBlank: ~
-          - LessThan: 180
-          - GreaterThan: -180
+#AlertApi\Model\Query:
+#  properties:
+#      latitude:
+#          - NotBlank: ~
+#          - LessThan: 90
+#          - GreaterThan: -90
+#      longitude:
+#          - NotBlank: ~
+#          - LessThan: 180
+#          - GreaterThan: -180
 
 AlertApi\Entity\Type:
   properties:

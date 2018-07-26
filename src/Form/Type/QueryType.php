@@ -2,6 +2,7 @@
 
 namespace AlertApi\Form\Type;
 
+use AlertApi\Form\DataTransformer\GeometryToStringTransformer;
 use AlertApi\Model\Query;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,8 +14,9 @@ class QueryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->setMethod('GET');
-        $builder->add('latitude', TextType::class);
-        $builder->add('longitude', TextType::class);
+        $builder->add('geospatial', TextType::class);
+
+        $builder->get('geospatial')->addModelTransformer(new GeometryToStringTransformer());
     }
 
     public function configureOptions(OptionsResolver $resolver)

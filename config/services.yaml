@@ -1,3 +1,6 @@
+parameters:
+    elasticsearch_host: 'elasticsearch'
+
 services:
     _defaults:
         public: false
@@ -16,4 +19,24 @@ services:
         class: AlertApi\Command\ImportCommand
         arguments:
             - '@alert_api.import_factory'
+        tags: [console.command]
+
+    elasticsearch.client:
+        class: Elasticsearch\Client
+        factory: ['Elasticsearch\ClientBuilder', fromConfig]
+        arguments:
+            - hosts:
+                - '%elasticsearch_host%'
+            - retries: 2
+
+    alert_api.repository.elasticsearch.alert:
+        public: true
+        class: AlertApi\Repository\Elasticsearch\AlertRepository
+        arguments:
+            - '@elasticsearch.client'
+
+    alert_api.command.mapping:
+        class: AlertApi\Command\MappingCommand
+        arguments:
+            - '@elasticsearch.client'
         tags: [console.command]

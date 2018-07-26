@@ -13,17 +13,11 @@ paths:
     get:
       tags:
         - Alert
-      summary: Return alerts by position
+      summary: Return alerts by geographic data
       parameters:
         - in: query
-          name: latitude
-          description: Latitude of position
-          schema:
-            type: string
-          required: true
-        - in: query
-          name: longitude
-          description: Longitude of position
+          name: geodata
+          description: Encoded geographic data structures in GeoJSON format
           schema:
             type: string
           required: true
@@ -99,8 +93,6 @@ components:
         latitude:
           type: "string"
         longitude:
-          type: "string"
-        distance:
           type: "string"
     Message:
       type: "object"
